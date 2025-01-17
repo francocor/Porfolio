@@ -1,4 +1,4 @@
-import "./Skills.css";
+import "../Css/Skills.css";
 
 export const Skills = () => {
   return (
@@ -19,3 +19,4 @@ export const Skills = () => {
     </div>
   )
 }
+export default Skills;

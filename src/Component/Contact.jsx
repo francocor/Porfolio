@@ -1,9 +1,9 @@
-import "./Contact.css";
+import "../Css/Contact.css";
 
 export const Contact = () => {
   return (
     <div>
-        <section>
+        <section id="contact" className="contact">
             <h2>Contacto</h2>
             <form action="">
                 <input type="text" placeholder="Tu Nombre" required/>
@@ -15,3 +15,4 @@ export const Contact = () => {
     </div>
   )
 }
+export default Contact;

@@ -1,0 +1,31 @@
+.proyects{
+    padding: 2rem;
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
+}
+
+.proyects h2{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00bcd4;
+}
+
+.proyects .proyect-grid{
+    display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.proyects .proyect-item{
+    background-color: #121212;
+    padding: 1rem;  
+    border-radius: 5px;
+    color: #cccccc;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.proyects .proyect-item:hover{
+    transform: scale(1.05);
+}

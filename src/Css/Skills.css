@@ -1,0 +1,42 @@
+.skills {
+    padding: 2rem;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    text-align: center;
+}
+
+.skills h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00bcd4;
+}
+
+.skills h2{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00bcd4;
+}
+
+.skills ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 0;
+}
+
+.skills li{
+    background-color: #121212;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #cccccc;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.skills li:hover{
+    background-color: #00bcd4 ;
+    color: #ffffff;
+}
