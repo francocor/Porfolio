@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -15,18 +15,29 @@ import { CgFileDocument } from "react-icons/cg";
 import logo from "../assets/logo.png";
 
 function CustomNavbar() {
-  const [expand, updateExpanded] = useState(false);
-  const [navColour, updateNavbar] = useState(false);
+  const [expand, updateExpanded] = useState(false); // Estado del menú hamburguesa
+  const [navColour, updateNavbar] = useState(false); // Estado del color del navbar
 
-  function scrollHandler() {
+  // Cambiar el color del navbar y cerrar el menú al hacer scroll
+  const scrollHandler = () => {
     if (window.scrollY >= 20) {
       updateNavbar(true);
     } else {
       updateNavbar(false);
     }
-  }
 
-  window.addEventListener("scroll", scrollHandler);
+    // Cerrar menú si está abierto
+    if (expand) {
+      updateExpanded(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler);
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, [expand]);
 
   return (
     <Navbar
@@ -36,13 +47,16 @@ function CustomNavbar() {
       className={navColour ? "sticky" : "navbar"}
     >
       <Container>
+        {/* Logo del navbar */}
         <Navbar.Brand href="/" className="d-flex w-50 me-auto">
           <img src={logo} alt="brand" className="img-fluid logo" />
         </Navbar.Brand>
+
+        {/* Botón de menú hamburguesa */}
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           onClick={() => {
-            updateExpanded(expand ? false : "expanded");
+            updateExpanded(!expand);
           }}
         >
           <span></span>
@@ -50,14 +64,17 @@ function CustomNavbar() {
           <span></span>
         </Navbar.Toggle>
 
+        {/* Menú desplegable */}
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto" defaultActiveKey="#home">
+            {/* Enlace a Home */}
             <Nav.Item>
               <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
                 <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
               </Nav.Link>
             </Nav.Item>
 
+            {/* Enlace a About */}
             <Nav.Item>
               <Nav.Link
                 as={Link}
@@ -68,6 +85,7 @@ function CustomNavbar() {
               </Nav.Link>
             </Nav.Item>
 
+            {/* Enlace a Project */}
             <Nav.Item>
               <Nav.Link
                 as={Link}
@@ -79,6 +97,7 @@ function CustomNavbar() {
               </Nav.Link>
             </Nav.Item>
 
+            {/* Enlace a Resume */}
             <Nav.Item>
               <Nav.Link
                 as={Link}
@@ -89,6 +108,7 @@ function CustomNavbar() {
               </Nav.Link>
             </Nav.Item>
 
+            {/* Botón a GitHub */}
             <Nav.Item className="fork-btn">
               <Button
                 href="https://github.com/francocor"
